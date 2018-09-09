@@ -29,7 +29,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-       "name": "Ragav","Thamarai"
+       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "apiVersion": "2018-02-01",
       "location": "[parameters('location')]",
       "sku": {
