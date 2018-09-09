@@ -29,14 +29,18 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "apiVersion": "2018-02-01",
       "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },
       "kind": "Storage",
-      "properties": {}
+      "properties": {},
+        "copy": {
+                "name": "storagecopy",
+                "count": 3
+            }
     }
   ],
   "outputs": {
